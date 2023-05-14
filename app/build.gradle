@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.android.testaar'
+    compileSdk 32
+    resourcePrefix "testaar_"
+
+    defaultConfig {
+        applicationId "com.android.testaar"
+        multiDexEnabled true
+        minSdk 26
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+        manifestPlaceholders = [
+                //从 3.1.2.0 版本开始，APPID 占位符从 GETUI_APP_ID 切换为 GETUI_APPID
+                //后续所有产品的 APPID 均统一配置为 GETUI_APPID 占位符
+                GETUI_APPID: "jC7wKY81r7Aodz81wSq7d7",
+        ]
+        ndk {
+            // 注意：这里需要添加项目所需 CPU 类型的最小集
+            abiFilters "armeabi", "armeabi-v7a", "x86_64", "x86"
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    viewBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    //Gson converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-recyclerview:4.0.0'
+
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+    implementation 'com.getui:gtsdk:3.2.15.0'  //个推SDK
+    implementation 'com.getui:gtc:3.2.1.0'  //个推核心组件
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    implementation files('libs/shopping_module_2-debug.aar')
+
+    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation files('libs\\afinal_0.5.1_bin.jar')
+    implementation project(path: ':MVPlibrary')
+    implementation project(path: ':my_mvplibrary')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}

@@ -1,0 +1,10 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:initialLayout="@layout/layout_widget"
+    android:minWidth="360dp"
+    android:minHeight="120dp"
+    android:previewImage="@drawable/push"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    tools:ignore="MissingDefaultResource,ResourceName"></appwidget-provider>

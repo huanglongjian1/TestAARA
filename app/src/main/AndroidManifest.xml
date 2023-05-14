@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.android.testaar">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="getui.permission.GetuiService.com.android.testaar" />
+
+    <permission
+        android:name="getui.permission.GetuiService.com.android.testaar"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
+
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--    安卓11下载读写内存权限-->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /><!--DownloadManager-->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+    <application
+        android:name=".mvptest.app.MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+
+        android:theme="@style/Theme.TestAAR"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:theme"
+        tools:targetApi="31">
+        <activity
+            android:name=".mvptest.MyTestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="今晚吃鸡大吉大利" />
+        </activity>
+        <activity android:name=".mvptest.app.MyTest2Acitivity"/>
+        <activity android:name="com.example.shopping_module_2.MyTestActivity" />
+        <!-- 请根据您当前自定义的 PushService 名称路径进行配置-->
+        <service
+            android:name=".DemoPushService"
+            android:exported="false"
+            android:label="PushService"
+            android:process=":pushservice" />
+        <service android:name=".DemoIntentService" />
+
+        <receiver
+            android:name=".download.DownLoadHelper$DownLoadCompleteReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+
+
+        <!--个推SDK的appid 重要！必须补充-->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="jC7wKY81r7Aodz81wSq7d7" />
+
+        <!-- 补充个验SDK的appid -->
+        <meta-data
+            android:name="GY_APP_ID"
+            android:value="个验SDK的appid" />
+
+        <!-- 补充个数SDK的appid -->
+        <meta-data
+            android:name="GS_APPID"
+            android:value="个数SDK的appid" />
+
+        <!-- 补充个像SDK的appid -->
+        <meta-data
+            android:name="GI_APPID"
+            android:value="个像SDK的appid" />
+
+
+    </application>
+    <queries>
+        <intent>
+            <action android:name="com.getui.sdk.action" />
+        </intent>
+    </queries>
+
+</manifest>
